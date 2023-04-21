@@ -1,10 +1,10 @@
 import './app.css'
 import VList from './components/vlist'
-import Item from './components/item'
+import ObserverItem from './components/observer-item'
 import faker from 'faker'
 
 let data = []
-for (let id = 0; id < 1000; id++) {
+for (let id = 0; id < 100; id++) {
 	const item = {
 		id,
 		value: faker.lorem.paragraphs(), // 长文本
@@ -17,21 +17,21 @@ for (let id = 0; id < 1000; id++) {
 }
 
 export default function App() {
-	// 开启图片
-	const enableImag = true
-
 	return (
 		<div className="App">
 			<VList list={data}>
 				{({ index, item, measure }) => (
-					<Item index={index} key={item.id} item={item} measure={measure}>
+					<ObserverItem
+						index={index}
+						key={item.id}
+						item={item}
+						measure={measure}
+					>
 						<>
 							{item.value}
-							{enableImag && item.src && (
-								<img src={item.src} onLoad={() => measure(index)} alt="" />
-							)}
+							{item.src && <img src={item.src} alt="" />}
 						</>
-					</Item>
+					</ObserverItem>
 				)}
 			</VList>
 		</div>
