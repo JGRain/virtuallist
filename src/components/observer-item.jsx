@@ -27,8 +27,8 @@ export default function Item(props) {
 	// 初次渲染完成
 	const measureItem = (index) => {
 		const item = element.current
-		if (item?.cliemtHeight) {
-			measure(index, item.cliemtHeight)
+		if (item?.clientHeight) {
+			measure(index, item.clientHeight)
 		}
 	}
 
