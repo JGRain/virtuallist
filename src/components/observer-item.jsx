@@ -1,15 +1,15 @@
 import { useEffect, useRef } from 'react'
-
 export default function Item(props) {
 	const { index, measure } = props
 	const element = useRef(null)
-
 	useEffect(() => {
 		measureItem(index)
-
 		return observe()
 	}, [])
-
+	let c = 0
+	for (let index = 0; index < 10000000; index++) {
+		c += index
+	}
 	// 监听高度变化
 	const observe = () => {
 		const resizeObserver = new ResizeObserver(() => {
@@ -21,15 +21,14 @@ export default function Item(props) {
 			}
 		})
 		resizeObserver.observe(element.current)
-
 		return () => resizeObserver.disconnect()
 	}
 
 	// 初次渲染完成
 	const measureItem = (index) => {
 		const item = element.current
-		if (item?.clientHeight) {
-			measure(index, item.clientHeight)
+		if (item?.cliemtHeight) {
+			measure(index, item.cliemtHeight)
 		}
 	}
 
